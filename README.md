@@ -22,7 +22,9 @@ Hotel booking
 
 Napraviti ću aplikaciju za rezervaciju hotelskih soba koja će biti dizajnirana za čuvanje informacija koje se odnose na sustav rezervacije. Služiti će zaposlenicima lokalnog hotela kojima je potreban sustav koji prati buduće, trenutne i arhivirane rezervacije. 
 Aplikacija će na početnom ekranu imati dvije opcije: pregled rezervacija i unos rezervacija.
+
 Klikom na pregled rezervacija otvoriti će se novi ekran s popisom svih rezervacija. Klikom na pojedinu rezervaciju otvoriti će se novi ekran s detaljima rezervacije(ime osobe koja je rezervirala, koju sobu, koji datum..). 
+
 Klikom na unos rezervacije moći će se unijeti nova rezervacija(unos imena osobe, broj sobe, datum..)
 
 
