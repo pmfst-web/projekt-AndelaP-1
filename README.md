@@ -1,5 +1,5 @@
 # Projektne faze
-- [ ] - Opis projekta
+- [x] - Opis projekta
 - [ ] - Početna struktura aplikacije
 - [ ] - Prototip
 - [ ] - Konzultacije
@@ -18,8 +18,12 @@ Ovdje ide opis projekta
 
 ## UPUTE
 ## Opis projekta
-Potrebno je napisati kratki opis projekta.
-Opis mora sadržavati popis osnovnih funkcionalnosti koje će biti implementirane (npr. "pretraživanje recepata", "unos novih recepta", "pretraživanje recepata po sastojcima" itd...)
+Hotel booking
+Napraviti ću aplikaciju za rezervaciju hotelskih soba koja će biti dizajnirana za čuvanje informacija koje se odnose na sustav rezervacije. Služiti će zaposlenicima lokalnog hotela kojima je potreban sustav koji prati buduće, trenutne i arhivirane rezervacije. 
+Aplikacija će na početnom ekranu imati dvije opcije: pregled rezervacija i unos rezervacija.
+Klikom na pregled rezervacija otvoriti će se novi ekran s popisom svih rezervacija. Klikom na pojedinu rezervaciju otvoriti će se novi ekran s detaljima rezervacije(ime osobe koja je rezervirala, koju sobu, koji datum..). 
+Klikom na unos rezervacije moći će se unijeti nova rezervacija(unos imena osobe, broj sobe, datum..)
+
 
 ## Početna struktura aplikacije
 Potrebno je inicijalizirati početnu strukturu mobilne aplikacije.
