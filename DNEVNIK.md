@@ -1,11 +1,10 @@
 # Evidencija aktivnosti
-## dd.mm.2021.
+## 29.3.2023
 Pocetak | Kraj
 ------- | ----
-hh:mm   | hh:mm
+12:10   | hh:mm
 ### Kratki opis promjena
-Definirani zahtjevi aplikacije.
-Dovršena prva faza projekta.
+Izrada početnog ekrana, ekrana za unos i ekrana za detalje.
 
 ## 23.12.2021.
 ### Kratki opis promjena
