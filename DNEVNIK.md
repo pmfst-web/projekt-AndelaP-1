@@ -7,5 +7,8 @@ Pocetak | Kraj
 Izrada početnog ekrana, ekrana za unos i ekrana za detalje.
 
 ## 30.3.2023
+Pocetak | Kraj
+------- | ----
+12:00   | 
 ### Kratki opis promjena
 
