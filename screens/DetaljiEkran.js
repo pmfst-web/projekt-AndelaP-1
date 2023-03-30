@@ -1,22 +1,19 @@
-import React, {useCallback, useEffect} from 'react';
-import {useSelector, useDispatch} from 'react-redux'
-import {promjenaFavorita} from '../store/actions/radovi'
+import React, { useCallback, useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { promjenaFavorita } from '../store/actions/radovi';
 import { View, Text, StyleSheet, Button } from 'react-native';
 
-
-
 const DetaljiEkran = ({ route, navigation }) => {
-
   const idOsobe = Number(route.params.id);
-  const sviRadovi = useSelector(state => state.radovi.radovi)
+  const sviRadovi = useSelector((state) => state.radovi.radovi);
   const rad = sviRadovi.find((r) => r.id === idOsobe);
 
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
 
-  const akcijaFavorit = () =>{
-    dispatch(promjenaFavorita(idOsobe))
-  }
-  
+  const akcijaFavorit = () => {
+    dispatch(promjenaFavorita(idOsobe));
+  };
+
 
   return (
     <View style={stil.ekran}>
@@ -34,7 +31,7 @@ const DetaljiEkran = ({ route, navigation }) => {
             <Text>Ime osobe</Text>
           </View>
           <View style={stil.stupac}>
-            <Text style={{...stil.ime}}>{rad.student}</Text>
+            <Text style={{ ...stil.ime }}>{rad.student}</Text>
           </View>
         </View>
         <View style={stil.redak}>
@@ -50,7 +47,9 @@ const DetaljiEkran = ({ route, navigation }) => {
             <Text>Vrsta sobe:</Text>
           </View>
           <View style={stil.stupac}>
-            <Text style={stil.bold}>{rad.vrsta === 'D' ? 'Dvokrevetna' : 'Jednokrevetna'}</Text>
+            <Text style={stil.bold}>
+              {rad.vrsta === 'D' ? 'Dvokrevetna' : 'Jednokrevetna'}
+            </Text>
           </View>
         </View>
         <View style={stil.redak}>
@@ -71,7 +70,7 @@ const DetaljiEkran = ({ route, navigation }) => {
         </View>
         <View style={stil.redak}>
           <View style={stil.stupac}>
-            <Button title="Trenutni gost" onPress={akcijaFavorit}/>
+            <Button title="Trenutni gost" onPress={akcijaFavorit} />
           </View>
         </View>
       </View>
@@ -89,7 +88,7 @@ const stil = StyleSheet.create({
   tablica: {
     width: '80%',
     flex: 1,
-    backgroundColor: '#f78717'
+    backgroundColor: '#f78717',
   },
   redak: {
     flexDirection: 'column',
@@ -103,13 +102,13 @@ const stil = StyleSheet.create({
     alignItems: 'center',
     marginVertical: 5,
   },
-  ime:{
-    fontFamily: "RobotoMono",
-    fontSize: 20
+  ime: {
+    fontFamily: 'RobotoMono',
+    fontSize: 20,
   },
-  bold:{
-    fontWeight: "bold",
-  }
+  bold: {
+    fontWeight: 'bold',
+  },
 });
 
 export default DetaljiEkran;
