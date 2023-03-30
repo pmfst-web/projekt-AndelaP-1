@@ -6,6 +6,6 @@ Pocetak | Kraj
 ### Kratki opis promjena
 Izrada početnog ekrana, ekrana za unos i ekrana za detalje.
 
-## 23.12.2021.
+## 30.3.2023
 ### Kratki opis promjena
-Napravio sam navigaciju
+
