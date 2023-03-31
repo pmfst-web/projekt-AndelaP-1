@@ -12,3 +12,11 @@ Pocetak | Kraj
 12:00   | 21:00
 ### Kratki opis promjena
 Izmjene na ekranima.
+
+## 31.3.2023
+Pocetak | Kraj
+------- | ----
+10:00   | 14:00
+### Kratki opis promjena
+Upravljanje favoritima
+
