@@ -20,3 +20,11 @@ Pocetak | Kraj
 ### Kratki opis promjena
 Upravljanje favoritima
 
+## 3.4.2023
+Pocetak | Kraj
+------- | ----
+10:00   | 12:00
+### Kratki opis promjena
+Izmjena izgleda aplikacije.
+
+
