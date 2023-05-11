@@ -4,7 +4,6 @@ import Tipka from '../components/Tipka'
 
 const PocetniEkran = ({ navigation }) => {
   return (
-
     <ScrollView vertical={true} style={stil.ekran}>
       <View style={stil.slikaOkvir}>
         <Image style={stil.slika} source={require('../assets/booking12.jpg')} />
