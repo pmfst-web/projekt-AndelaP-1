@@ -1,12 +1,14 @@
-import * as React from 'react';
+import React, { useState } from 'react';
 import {
   View,
   Text,
   StyleSheet,
   FlatList,
   TouchableOpacity,
+  TextInput,
+  TouchableWithoutFeedback,
+  Keyboard,
 } from 'react-native';
-
 
 import ListaElement from '../components/ListaElement';
 import { useSelector } from 'react-redux';
@@ -32,19 +34,37 @@ const PopisEkran = ({ route, navigation }) => {
     );
   };
 
-  return (
-    <View style={stil.ekran}>
-      <View style={stil.lista}>
-        <FlatList
-          showsVerticalScrollIndicator={false}
-          style={{ margin: 5,}}
-          data={radoviPrikaz}
-          renderItem={prikazElelementa}
-          numColumns={1}
+  const [searchText, setSearchText] = useState('');
+  const data = radoviPrikaz;
 
-        />
+  const filteredData = data.filter((item) =>
+    item.student.toLowerCase().includes(searchText.toLowerCase())
+  );
+
+
+  return (
+    <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
+      <View style={stil.ekran}>
+        <View style={{ flex: 1, padding: 20 }}>
+          <TextInput
+            style={{ height: 40, borderColor: 'gray', borderWidth: 1 }}
+            onChangeText={(text) => setSearchText(text)}
+            value={searchText}
+            placeholder="Pretraži"
+          />
+          <View style={stil.lista}>
+            <FlatList
+              showsVerticalScrollIndicator={false}
+              style={{ margin: 5 }}
+              data={filteredData}
+              renderItem={prikazElelementa}
+              keyExtractor={(item) => item.id}
+              numColumns={1}
+            />
+          </View>
+        </View>
       </View>
-    </View>
+    </TouchableWithoutFeedback>
   );
 };
 
