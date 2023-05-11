@@ -26,5 +26,11 @@ Pocetak | Kraj
 10:00   | 12:00
 ### Kratki opis promjena
 Izmjena izgleda aplikacije.
+##11.5.2023
+Pocetak | Kraj
+------- | ----
+12:00   | 15:58
+### Kratki opis promjena
+Dodavanje pretraživanje gostiju po imenu
 
 
