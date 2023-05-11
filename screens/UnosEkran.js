@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import {
   View,
   Text,
@@ -8,19 +8,34 @@ import {
   SafeAreaView,
   Keyboard,
   TouchableWithoutFeedback,
+  TouchableOpacity,
 } from 'react-native';
+
 import RadioButtonGroup, { RadioButtonItem } from 'expo-radio-button';
 import Tipka from '../components/Tipka';
 import Rad from '../models/rad';
 import { RADOVI } from '../data/test-podaci';
 import DateTimePickerModal from 'react-native-modal-datetime-picker';
 import { MaterialIcons } from '@expo/vector-icons';
-const UnosEkran = () => {
+const UnosEkran = ({ navigation }) => {
   const [rtbCurrent, rtbSetCUrrent] = useState('');
   const [ime, postaviIme] = useState('');
   const [naslov, postaviNaslov] = useState('');
   const [selectedDate, setSelectedDate] = useState(new Date());
   const [selectedDate1, setSelectedDate1] = useState(new Date());
+  useEffect(() => {
+    navigation.setOptions(({
+      headerRight: () => {
+        return (
+          <TouchableOpacity onPress={() => navigation.push('Popis')}>
+            <View>
+              <MaterialIcons name="list-alt" size={26} color="black" />
+            </View>
+          </TouchableOpacity>
+        );
+      },
+    }));
+  },[navigation]);
   const [datePickerVisible, setDatePickerVisible] = useState(false);
   const [datePickerVisible1, setDatePickerVisible1] = useState(false);
 
@@ -69,7 +84,6 @@ const UnosEkran = () => {
         selectedDate.toISOString(),
         selectedDate1.toISOString()
       );
-
       rtbSetCUrrent('');
       postaviIme('');
       postaviNaslov('');
@@ -82,130 +96,132 @@ const UnosEkran = () => {
 
   return (
     <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
-    <View style={stil.ekran}>
-      <View style={stil.inputField}>
-        <Text style={stil.tekst}>Ime i prezime:</Text>
-        <TextInput style={stil.txtInput} value={ime} onChangeText={changeIme} />
-      </View>
-      <View style={stil.inputField}>
-        <Text style={stil.tekst}>Broj sobe:</Text>
-        <TextInput
-          style={stil.txtInput}
-          value={naslov}
-          onChangeText={changeNaslov}
-          keyboardType="numeric"
-        />
-      </View>
-      <View>
-        <RadioButtonGroup
-          selected={rtbCurrent}
-          onSelected={(value) => rtbSetCUrrent(value)}
-          radioBackground={'grey'}
-          containerOptionStyle={{ marginTop: 10 }}>
-          <RadioButtonItem
-            value="J"
-            label={<Text style={{ color: 'black' }}>Jednokrevetna</Text>}
+      <View style={stil.ekran}>
+        <View style={stil.inputField}>
+          <Text style={stil.tekst}>Ime i prezime:</Text>
+          <TextInput
+            style={stil.txtInput}
+            value={ime}
+            onChangeText={changeIme}
           />
-          <RadioButtonItem
-            value="D"
-            label={<Text style={{ color: 'black' }}>Dvokrevetna</Text>}
+        </View>
+        <View style={stil.inputField}>
+          <Text style={stil.tekst}>Broj sobe:</Text>
+          <TextInput
+            style={stil.txtInput}
+            value={naslov}
+            onChangeText={changeNaslov}
+            keyboardType="numeric"
           />
-        </RadioButtonGroup>
-      </View>
+        </View>
+        <View>
+          <RadioButtonGroup
+            selected={rtbCurrent}
+            onSelected={(value) => rtbSetCUrrent(value)}
+            radioBackground={'grey'}
+            containerOptionStyle={{ marginTop: 10 }}>
+            <RadioButtonItem
+              value="J"
+              label={<Text style={{ color: 'black' }}>Jednokrevetna</Text>}
+            />
+            <RadioButtonItem
+              value="D"
+              label={<Text style={{ color: 'black' }}>Dvokrevetna</Text>}
+            />
+          </RadioButtonGroup>
+        </View>
 
-      <SafeAreaView>
-        <View
-          style={{
-            display: 'flex',
-            justifyContent: 'center',
-            alignItems: 'center',
-          }}>
-          
-          
-           <Text style={{ fontSize: 20 }}>
-          Check-in:{' '}
-          <MaterialIcons
-            color="green"
-            display="flex"
-            justifyContent="center"
-            alignItems="center"
-            name="event"
-            size={26}
-            onPress={showDatePicker}
-          />
-        </Text>
-          <DateTimePickerModal
-            date={selectedDate}
-            isVisible={datePickerVisible}
-            mode="date"
-            onConfirm={handleConfirm}
-            onCancel={hideDatePicker}
-          />
-          <Text
+        <SafeAreaView>
+          <View
             style={{
-              fontSize: 24,
-              fontWeight: 'bold',
-              marginBottom: 5,
-              marginTop: 10,
+              display: 'flex',
+              justifyContent: 'center',
               alignItems: 'center',
             }}>
-            {selectedDate
-              ? selectedDate.toLocaleDateString()
-              : 'No date selected'}
+            <Text style={{ fontSize: 20 }}>
+              Check-in:{' '}
+              <MaterialIcons
+                color="green"
+                display="flex"
+                justifyContent="center"
+                alignItems="center"
+                name="event"
+                size={26}
+                onPress={showDatePicker}
+              />
+            </Text>
+            <DateTimePickerModal
+              date={selectedDate}
+              isVisible={datePickerVisible}
+              mode="date"
+              onConfirm={handleConfirm}
+              onCancel={hideDatePicker}
+            />
+            <Text
+              style={{
+                fontSize: 24,
+                fontWeight: 'bold',
+                marginBottom: 5,
+                marginTop: 10,
+                alignItems: 'center',
+              }}>
+              {selectedDate
+                ? selectedDate.toLocaleDateString()
+                : 'No date selected'}
+            </Text>
+          </View>
+        </SafeAreaView>
+        <SafeAreaView>
+          <Text style={{ fontSize: 20 }}>
+            Check-out:{' '}
+            <MaterialIcons
+              color="red"
+              display="flex"
+              justifyContent="center"
+              alignItems="center"
+              name="event"
+              size={26}
+              onPress={showDatePicker1}
+            />
           </Text>
-        </View>
-      </SafeAreaView>
-      <SafeAreaView>
-        <Text style={{ fontSize: 20 }}>
-          Check-out:{' '}
-          <MaterialIcons
-            color="red"
-            display="flex"
-            justifyContent="center"
-            alignItems="center"
-            name="event"
-            size={26}
-            onPress={showDatePicker1}
+          <DateTimePickerModal
+            date={selectedDate1}
+            isVisible={datePickerVisible1}
+            mode="date"
+            onConfirm={handleConfirm1}
+            onCancel={hideDatePicker1}
           />
-        </Text>
-        <DateTimePickerModal
-          date={selectedDate1}
-          isVisible={datePickerVisible1}
-          mode="date"
-          onConfirm={handleConfirm1}
-          onCancel={hideDatePicker1}
-        />
-        <View
-          style={{
-            display: 'flex',
-            justifyContent: 'center',
-            alignItems: 'center',
-          }}>
-          <Text
+          <View
             style={{
-              fontSize: 24,
-              fontWeight: 'bold',
-              marginBottom: 5,
-              marginTop: 10,
+              display: 'flex',
+              justifyContent: 'center',
+              alignItems: 'center',
             }}>
-            {selectedDate1
-              ? selectedDate1.toLocaleDateString()
-              : 'No date selected'}
-          </Text>
+            <Text
+              style={{
+                fontSize: 24,
+                fontWeight: 'bold',
+                marginBottom: 5,
+                marginTop: 10,
+              }}>
+              {selectedDate1
+                ? selectedDate1.toLocaleDateString()
+                : 'No date selected'}
+            </Text>
+          </View>
+        </SafeAreaView>
+        <View>
+          <Tipka
+            title="Spremi"
+            style={{
+              marginTop: 20,
+              width: 300,
+              height: 50,
+              backgroundColor: '#0a7cf7',
+            }}
+            onPress={dodajNovi}></Tipka>
         </View>
-      </SafeAreaView>
-      <View>
-        <Tipka
-          title="Spremi"
-          style={{
-            marginTop: 20,
-            width: 300,
-            height: 50,
-            backgroundColor: '#0a7cf7',
-          }}
-          onPress={dodajNovi}></Tipka>
       </View>
-    </View>
     </TouchableWithoutFeedback>
   );
 };
@@ -215,7 +231,7 @@ const stil = StyleSheet.create({
     flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
-    backgroundColor:'#FFFFCC'
+    backgroundColor: '#FFFFCC',
   },
   txtInput: {
     height: 40,
