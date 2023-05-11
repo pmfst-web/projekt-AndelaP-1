@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { promjenaFavorita } from '../store/actions/radovi';
 import { View, Text, StyleSheet, Button } from 'react-native';
