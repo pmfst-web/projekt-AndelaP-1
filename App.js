@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import { View, Text, Button, TouchableOpacity } from 'react-native';
+import { View, Text, Button, TouchableOpacity, TextInput } from 'react-native';
+
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { MaterialIcons } from '@expo/vector-icons';
@@ -15,21 +16,20 @@ import PopisEkran from './screens/PopisEkran';
 import DetaljiEkran from './screens/DetaljiEkran';
 import UnosEkran from './screens/UnosEkran';
 
+//instanca objekta za navigaciju
 const Stack = createNativeStackNavigator();
-import PopisSvi from './screens/PopisSvi';
-import PopisFav from './screens/PopisTrenutni';
 
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 const Tab = createBottomTabNavigator();
 
-const tabEkrani = () => {
+/*const tabEkrani = () => {
   return (
     <Tab.Navigator>
       <Tab.Screen name="Svi" component={PopisSvi} />
       <Tab.Screen name="Trenutni gosti" component={PopisFav} />
     </Tab.Navigator>
   );
-};
+};*/
 
 const tabEkrani1 = () => {
   return (
@@ -38,6 +38,7 @@ const tabEkrani1 = () => {
         name="Svi"
         component={PopisEkran}
         initialParams={{ prikaz: 'svi' }}
+        
       />
       <Tab.Screen
         name="Trenutni"
@@ -66,7 +67,7 @@ const store = createStore(glavniReducer);
 
 function App() {
   const [fontUcitan, ucitano] = useState(false);
-  
+
   if (!fontUcitan) {
     return (
       <AppLoading
@@ -84,7 +85,7 @@ function App() {
             headerStyle: {
               backgroundColor: 'white',
             },
-            headerTintColor:'black',
+            headerTintColor: 'black',
           }}>
           <Stack.Screen
             name="Naslovna"
@@ -106,10 +107,10 @@ function App() {
                         <MaterialIcons
                           name="note-add"
                           size={26}
-                          color='black'
+                          color="black"
                         />
                       </View>
-                    </TouchableOpacity>
+                    </TouchableOpacity>   
                   );
                 },
               };
@@ -128,10 +129,7 @@ function App() {
                     <TouchableOpacity
                       onPress={() => navigation.navigate('Naslovna')}>
                       <View>
-                        <MaterialIcons
-                          name="house"
-                          size={26}
-                        />
+                        <MaterialIcons name="house" size={26} />
                       </View>
                     </TouchableOpacity>
                   );
@@ -139,7 +137,8 @@ function App() {
               };
             }}
           />
-          <Stack.Screen name="Unos" component={UnosEkran} />
+          <Stack.Screen name="Unos" component={UnosEkran} options={{headerTitle:"as"} }
+          />
         </Stack.Navigator>
       </NavigationContainer>
     </Provider>
